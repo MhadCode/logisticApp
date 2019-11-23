@@ -9,7 +9,7 @@ if(isset($_REQUEST['btnLogin'])){
 	if($res->num_rows > 0){
         $row = $res->fetch_array();
         $_SESSION['codename'] = $user;
-        header("location:$url"."components/?id=$user");
+        header("location:$url"."components/?sched=true");
     }
     else{
         $err = 'Invalid your username and password';

@@ -15,6 +15,7 @@ include('../config/path.php');
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
     <link href="../assets/css/demo.css" rel="stylesheet" />
+    <link href="../assets/css/calendar.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -23,26 +24,26 @@ include('../config/path.php');
             <div class="sidebar-wrapper">
                 <img src="../img/logo.png" class="img-fluid logo">
                 <ul class="nav">
-                    <!-- <li>
-                        <a class="nav-link" href="map.php">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>Maps</p>
-                        </a>
-                    </li> -->
                     <li>
-                        <a class="nav-link" href="schedules.php">
+                        <a class="nav-link" href="?map=true">
+                            <i class="nc-icon nc-pin-3"></i>
+                            <p>Geolocations</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="?sched=true">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Schedules</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="notifications.php">
+                        <a class="nav-link" href="?notify=true">
                             <i class="nc-icon nc-bell-55"></i>
                             <p>Notifications</p>
                         </a>
                     </li>
-                    <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="logout.php">
+                    <li class="nav-item active-pro" >
+                        <a class="nav-link active" style="background:#FF0023" href="logout.php">
                             <i class="nc-icon nc-alien-33"></i>
                             <p>Logout</p>
                         </a>
@@ -64,7 +65,7 @@ include('../config/path.php');
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <span class="no-icon nc-icon nc-circle-09"> </span> &nbsp;<?php echo $_REQUEST['id'];?>
+                                    <span class="no-icon nc-icon nc-circle-09"> </span> &nbsp;<?php echo $_SESSION['codename'];?>
                                 </a>
                             </li>
                         </ul>
@@ -72,11 +73,21 @@ include('../config/path.php');
                 </div>
             </nav>
             <!-- End Navbar -->
-            <div class="content">
-                <div class="container-fluid">
-                    
-                </div>
-            </div>
+            
+                    <?php if(isset($_REQUEST['sched'])){?>
+                        <div class="content">
+                            <div class="container-fluid">
+                                <?php include('schedule.php');?>
+                            </div>
+                        </div>
+                    <?php } elseif(isset($_REQUEST['notify'])){?>
+                        <div class="content">
+                            <div class="container-fluid">
+                            </div>
+                        </div>
+                    <?php } elseif(isset($_REQUEST['map'])){?>
+                        <img src = "../img/Geos.png" class="img-fluid">
+                    <?php }?>
         </div>
     </div>
 </body>
