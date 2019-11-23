@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2019 at 10:27 PM
+-- Generation Time: Nov 23, 2019 at 10:32 PM
 -- Server version: 5.5.39
 -- PHP Version: 7.3.5
 
@@ -74,16 +74,17 @@ CREATE TABLE IF NOT EXISTS `notify` (
   `vihicles_id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
   `data_book` date NOT NULL,
-  `deliver_date` date NOT NULL
+  `deliver_date` date NOT NULL,
+  `status` tinyint(4) NOT NULL COMMENT '1=accept, 2=not'
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `notify`
 --
 
-INSERT INTO `notify` (`id`, `vihicles_id`, `client_id`, `data_book`, `deliver_date`) VALUES
-(1, 1, 1, '2019-11-24', '2019-11-29'),
-(2, 1, 2, '2019-11-24', '2019-11-27');
+INSERT INTO `notify` (`id`, `vihicles_id`, `client_id`, `data_book`, `deliver_date`, `status`) VALUES
+(1, 1, 1, '2019-11-24', '2019-11-29', 0),
+(2, 1, 2, '2019-11-24', '2019-11-27', 0);
 
 -- --------------------------------------------------------
 
